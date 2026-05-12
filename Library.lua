@@ -1928,7 +1928,7 @@ do
         local ColorPicker = {
             Value = Info.Default;
 
-            Transparency = Info.Transparency or 0;
+            Transparency = typeof(Info.Transparency) == "number" and Info.Transparency or 0;
             Type = "ColorPicker";
             Title = typeof(Info.Title) == "string" and Info.Title or "Color picker",
             Callback = Info.Callback or function(Color) end;
