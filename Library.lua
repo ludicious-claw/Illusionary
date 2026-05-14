@@ -11,12 +11,13 @@ local RunService: RunService = cloneref(game:GetService("RunService"))
 local TweenService: TweenService = cloneref(game:GetService("TweenService"))
 
 local LocalPlayer = Players.LocalPlayer or Players.PlayerAdded:Wait()
+local GuiInset = game:GetService("GuiService"):GetGuiInset()
+
 local Mouse = setmetatable({}, {
     __index = function(_, key)
-        local pos = InputService:GetMouseLocation()
-        if key == "X" then return pos.X
-        elseif key == "Y" then return pos.Y
-        end
+        local pos = InputService:GetMouseLocation() - GuiInset
+
+        return key == "X" and pos.X or key == "Y" and pos.Y
     end
 })
 
